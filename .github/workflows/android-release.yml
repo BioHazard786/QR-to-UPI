@@ -73,7 +73,7 @@ jobs:
           echo "## 📦 Installation" >> $GITHUB_OUTPUT
           echo "1. Download the APK" >> $GITHUB_OUTPUT
           echo "2. Enable *Install from unknown sources*" >> $GITHUB_OUTPUT
-          echo "3. Install and receive payment instantly" >> $GITHUB_OUTPUT
+          echo "3. Install and share QR instantly" >> $GITHUB_OUTPUT
           echo "" >> $GITHUB_OUTPUT
           echo "## 📋 Requirements" >> $GITHUB_OUTPUT
           echo "- Android 7.0 (API 24)+ " >> $GITHUB_OUTPUT

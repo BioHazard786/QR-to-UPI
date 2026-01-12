@@ -1,0 +1,8 @@
+v0.0.1 – Initial Release
+- 📸 One-tap QR code scanning from shared photos.
+- ⚡ Direct UPI ID extraction from QR codes.
+- 🔄 Share both UPI IDs and deep links seamlessly.
+- 🤝 Works as share target across all apps.
+- 🌙 Full dark mode with dynamic theming (Android 12+).
+- 🎨 Modern Material 3 design with Jetpack Compose.
+- 📱 Edge-to-edge display optimized for notches.s

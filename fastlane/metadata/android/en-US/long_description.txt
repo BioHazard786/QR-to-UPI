@@ -1,0 +1,45 @@
+Stop the gallery scroll. Start paying instantly.
+
+We've all been there: A friend sends you a QR code photo on WhatsApp. Now you have to download it, open your UPI app, tap "Scan from Gallery," and scroll through 500 screenshots to find that one QR code.
+
+No more.
+
+QR to UPI is a share target that lets you scan QR codes from photos instantly—without saving them to your device or hunting through your gallery.
+
+🚀 THE PROBLEM:
+Your friend's bank server is down (again). They send you a photo of the shopkeeper's QR code. You now have to:
+1. Download the image
+2. Open your UPI app
+3. Navigate to "Scan from Gallery"
+4. Scroll past memes and screenshots
+5. Find the QR code
+6. Finally pay
+
+❌ This is ridiculous.
+
+✨ THE SOLUTION:
+Just share the QR code photo directly to QR to UPI. It scans instantly. No saving. No scrolling. No pain.
+
+🔄 DUAL UPI RELAY:
+But wait, there's more. Sometimes YOU need to send a UPI ID to someone else.
+
+Instead of forcing them through the same "save → scan from gallery" nightmare, QR to UPI extracts the UPI ID from any QR code and lets you share it directly—either as plain text or as a UPI deep link.
+
+Break the cycle. Set them free.
+
+📱 FEATURES:
+• Share QR code photos from any app (WhatsApp, Files, Photos, etc.)
+• Instant scanning without saving to gallery
+• Extract and share UPI IDs as text or deep links
+• Beautiful Material 3 design with dark mode
+• Edge-to-edge display for modern devices
+• Completely offline—no internet required
+• Open source—no ads, no tracking, no nonsense
+
+🎯 PERFECT FOR:
+• Paying for deliveries when friends forward shop QR codes
+• Splitting bills across cities
+• Anyone tired of gallery-based QR scanning
+• People who value their time and sanity
+
+Made with frustration and Kotlin by someone who got tired of scrolling through their gallery.

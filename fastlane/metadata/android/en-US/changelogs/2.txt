@@ -1,0 +1,5 @@
+v0.0.2 – Splash Screen Update
+
+- 🚀 Added custom splash screen with branded logo.
+- 🌟 Smooth app launch experience with Material 3 theming.
+- 🎯 Enhanced visual polish for first impressions.
