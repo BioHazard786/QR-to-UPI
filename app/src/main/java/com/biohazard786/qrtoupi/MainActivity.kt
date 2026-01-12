@@ -37,7 +37,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.dynamicDarkColorScheme
@@ -59,6 +58,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.net.toUri
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -67,6 +67,7 @@ class MainActivity : ComponentActivity() {
     @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        installSplashScreen()
         enableEdgeToEdge()
         setContent {
             QRToUPITheme {
@@ -192,7 +193,23 @@ fun InfoScreen(
                 FeatureItem(
                     icon = R.drawable.ic_qr_code_scanner, title = "Scan", desc = "Any UPI QR"
                 )
+                Icon(
+                    painter = painterResource(R.drawable.ic_arrow_forward),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .size(24.dp)
+                        .align(Alignment.CenterVertically),
+                    tint = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.3f)
+                )
                 FeatureItem(icon = R.drawable.ic_upi, title = "Verify", desc = "See Payee")
+                Icon(
+                    painter = painterResource(R.drawable.ic_arrow_forward),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .size(24.dp)
+                        .align(Alignment.CenterVertically),
+                    tint = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.3f)
+                )
                 FeatureItem(icon = R.drawable.ic_share, title = "Share", desc = "Send Link")
             }
         }
@@ -204,12 +221,14 @@ fun InfoScreen(
 
             OutlinedButton(
                 onClick = {
-                    val upiUriBuilder = Uri.Builder().scheme("upi").authority("pay")
-                        .appendQueryParameter("pa", R.string.upi_id.toString())
-                        .appendQueryParameter("pn", R.string.upi_name.toString())
-                        .appendQueryParameter("tn", R.string.upi_description.toString())
+                    val upiUri = Uri.Builder().scheme("upi").authority("pay")
+                        .appendQueryParameter("pa", context.getString(R.string.upi_id))
+                        .appendQueryParameter("pn", context.getString(R.string.upi_name))
+                        .appendQueryParameter("tn", context.getString(R.string.upi_description))
+                        .appendQueryParameter("cu", "INR")
+                        .build()
 
-                    val intent = Intent(Intent.ACTION_VIEW, upiUriBuilder.build())
+                    val intent = Intent(Intent.ACTION_VIEW, upiUri)
                     try {
                         context.startActivity(intent)
                     } catch (e: Exception) {
@@ -266,29 +285,26 @@ fun FeatureItem(@DrawableRes icon: Int, title: String, desc: String) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.width(80.dp)
     ) {
-        Surface(
-            shape = RoundedCornerShape(12.dp),
-            color = MaterialTheme.colorScheme.secondaryContainer,
-            modifier = Modifier.size(48.dp),
-            tonalElevation = 2.dp
-        ) {
-            Icon(
-                painter = painterResource(id = icon),
-                contentDescription = null,
-                modifier = Modifier.padding(12.dp),
-                tint = MaterialTheme.colorScheme.onSecondaryContainer
-            )
-        }
-        Spacer(modifier = Modifier.height(8.dp))
+        Icon(
+            painter = painterResource(id = icon),
+            contentDescription = null,
+            modifier = Modifier
+                .size(48.dp)
+                .padding(8.dp),
+            tint = MaterialTheme.colorScheme.primary
+        )
         Text(
-            text = title, style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.Bold
+            text = title,
+            style = MaterialTheme.typography.titleSmall,
+            fontWeight = FontWeight.Bold,
+            color = MaterialTheme.colorScheme.onSurface
         )
         Text(
             text = desc,
             style = MaterialTheme.typography.bodySmall,
             textAlign = TextAlign.Center,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
-            lineHeight = MaterialTheme.typography.bodySmall.lineHeight * 1.1
+            lineHeight = MaterialTheme.typography.bodySmall.lineHeight
         )
     }
 }
